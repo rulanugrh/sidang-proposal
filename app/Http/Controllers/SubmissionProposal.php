@@ -29,9 +29,11 @@ class SubmissionProposal extends Controller
     ];
 
     public function index() {
-        return view('proposal.index', [
-            'proposals' => UploadProposal::where('NIM', Session::get('email'))
-        ]);
+        $proposal = UploadProposal::where("NIM", auth()->user()->email)->first();
+        if ( $proposal === null ) {
+            return view('proposal.create');
+        };
+        return view('proposal.index', compact('proposal'));
     }
 
     public function create()
@@ -43,7 +45,7 @@ class SubmissionProposal extends Controller
         $this->validate($request, $this->rules, $this->messageRules);
 
         $extension_berkas = $request->file('berkas')->getClientOriginalExtension();
-        $berkas = 'Proposal'.Str::replaceFirst('.', '', Session::get('email')).'-'.date('His');
+        $berkas = 'Proposal'.Str::replaceFirst('.', '-', auth()->user()->email).'-'.date('His');
         $request->berkas->move(public_path('/upload/pengajuan/proposal'), $berkas . '.' . $extension_berkas);
 
         try {
@@ -79,7 +81,7 @@ class SubmissionProposal extends Controller
 
         try {
 
-            $proposal->update($request->all());
+            $proposal->where('NIM', auth()->user()->email)->update($request->all());
         } catch (\Exception $e) {
             Log::error($e->getMessage());
             return redirect()->route('proposal.index')->with('error', 'Data mahasiswa gagal diubah');

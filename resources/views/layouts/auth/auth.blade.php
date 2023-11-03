@@ -28,9 +28,6 @@
                     <h1 class="auth-title">{{ $authTitle }}</h1>
                     <p class="auth-subtitle mb-5">{{ $authSubtitle }}</p>
                     {{ $slot }}
-                    <div class="text-center mt-5 text-lg fs-4">
-                        {{ $authFooter }}
-                    </div>
                 </div>
             </div>
             <div class="col-lg-7 d-none d-lg-block">

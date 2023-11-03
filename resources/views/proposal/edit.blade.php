@@ -20,21 +20,19 @@
             <x-input type="text" name="jenis_sidang" :value="$proposal->jenis_sidang" placeholder="Masukkan Jenis Sidang"
                 required="true"></x-input>
         </x-form-group>
-        <x-form-group col="col-md-6 col-12" label="Berkas Proposal" :invalidFeedback="$errors->first('berkas')">
-            <x-input type="text" name="berkas" :value="$proposal->berkas" placeholder="Masukkan Berkas Sidang"
-                required="true"></x-input>
-        </x-form-group>
         <x-form-group col="col-md-6 col-12" label="Email Mahasiswa" :invalidFeedback="$errors->first('email')">
             <x-input type="email" name="email" :value="$proposal->email" placeholder="Masukkan Email Mahasiswa"
                 required="true"></x-input>
         </x-form-group>
-        <x-form-group label="Jadwal Sidang" :invalidFeedback="$errors->first('jadwal_sidang')">
-            <x-input type="date" name="jadwal_sidang" :value="$proposal->jadwal_sidang" placeholder="Masukkan Jadwal Sidang"
+        <x-form-group label="Update Berkas Proposal" :invalidFeedback="$errors->first('berkas')">
+            <x-input type="file" name="berkas" :value="$proposal->berkas" placeholder="Masukkan Berkas Sidang"
                 required="true"></x-input>
         </x-form-group>
+        <x-form-group label="Jadwal Sidang" :invalidFeedback="$errors->first('jadwal_sidang')">
+            <x-input-disabled type="date" name="jadwal_sidang" :value="$proposal->jadwal_sidang" placeholder="Jadwal Sidang"></x-input-disabled>
+        </x-form-group>
         <x-form-group label="Waktu Sidang" :invalidFeedback="$errors->first('pukul')">
-            <x-input type="time" name="pukul" :value="$proposal->pukul" placeholder="Masukkan Waktu Sidang"
-                required="true"></x-input>
+            <x-input-disabled type="time" name="pukul" :value="$proposal->pukul" placeholder="Waktu Sidang" ></x-input-disabled>
         </x-form-group>
     </x-form>
 </x-app-layout>

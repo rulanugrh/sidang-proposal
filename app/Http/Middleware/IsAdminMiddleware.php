@@ -15,15 +15,15 @@ class IsAdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if($this->auth()->guest()) {
+        if(auth()->guest()) {
             return redirect('/');
         }
 
-        if($this->auth()->user()->isAdmin) {
+        if(auth()->user()->authGroup->id === 1) {
             
             return $next($request);
         }
 
-        return redirect('/');
+        return $next($request);
     }
 }
