@@ -48,7 +48,7 @@
                         <span>Home</span>
                     </a>
                 </li>
-                {{-- @if(!auth()->guest() && auth()->user()->isAdmin) --}}
+                @if(!auth()->guest() && auth()->user()->isAdmin)
                     <li class="sidebar-item @active('mahasiswa*') ">
                         <a href="{{ route('mahasiswa.index') }}" class="sidebar-link">
                             <i class="bi bi-grid-fill"></i>
@@ -62,7 +62,14 @@
                             <span>Proposal Mahasiswa</span>
                         </a>
                     </li>
-                {{-- @endif --}}
+                @else
+                    <li class="sidebar-item @active('proposal*') ">
+                        <a href="{{ route('proposal.index') }}" class="sidebar-link">
+                            <i class="bi bi-grid-fxill"></i>
+                            <span>Submission Proposal</span>
+                        </a>
+                    </li>
+                @endif
             </ul>
         </div>
     </div>

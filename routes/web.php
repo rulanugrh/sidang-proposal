@@ -4,6 +4,7 @@ use App\Http\Controllers\AnggotaUKMController;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ManageProposal;
+use App\Http\Controllers\SubmissionProposal;
 use App\Http\Controllers\UnitKegiatanMahasiswaController;
 use App\Http\Controllers\UploadProposalController;
 use App\Http\Middleware\IsAdminMiddleware;
@@ -32,9 +33,10 @@ Route::get('/', function () {
     ]);
 });
 
-Route::resource('admin-proposal', ManageProposal::class)->except(['show']);
-Route::resource('mahasiswa', MahasiswaController::class)->except(['show']);
 Route::middleware(['admin'])->group(function () {
+    Route::resource('admin-proposal', ManageProposal::class)->except(['show']);
+    Route::resource('proposal', SubmissionProposal::class)->except(['show']);
+    Route::resource('mahasiswa', MahasiswaController::class)->except(['show']);
     Route::get('mahasiswa/export/pdf', [MahasiswaController::class, 'exportPdf'])->name('mahasiswa.pdf');
     Route::get('mahasiswa/export/excel', [MahasiswaController::class, 'exportExcel'])->name('mahasiswa.excel');
     

@@ -53,7 +53,7 @@ class MahasiswaController extends Controller
             Mahasiswa::create($request->all());
             $user = User::create([
                 'name' => $request['name'],
-                'email' => $request['email'],
+                'email' => $request['NIM'],
                 'password' => bcrypt($request['NIM'])
 
             ]);
