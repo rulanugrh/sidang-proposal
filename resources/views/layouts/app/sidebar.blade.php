@@ -62,11 +62,24 @@
                             <span>Proposal Mahasiswa</span>
                         </a>
                     </li>
+
+                    <li class="sidebar-item @active('user*') ">
+                        <a href="{{ route('user.index') }}" class="sidebar-link">
+                            <i class="bi bi-grid-fxill"></i>
+                            <span>Setting Profile</span>
+                        </a>
+                    </li>
                 @else
                     <li class="sidebar-item @active('proposal*') ">
                         <a href="{{ route('proposal.index') }}" class="sidebar-link">
                             <i class="bi bi-grid-fxill"></i>
                             <span>Submission Proposal</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item @active('user*') ">
+                        <a href="{{ route('user.index') }}" class="sidebar-link">
+                            <i class="bi bi-grid-fxill"></i>
+                            <span>Setting Profile</span>
                         </a>
                     </li>
                 @endif

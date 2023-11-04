@@ -13,12 +13,8 @@
                         <i class="fas fa-users"></i>
                     </x-card-with-icon>
                     <x-card-with-icon col="col-12 col-lg-4 col-md-6" color="green"
-                        title="Total Unit Kegiatan Mahasiswa" number="{{ $proposal }}">
-                        <i class="fa fa-store"></i>
-                    </x-card-with-icon>
-                    <x-card-with-icon col="col-12 col-lg-4 col-md-4" color="red" title="Total Anggota UKM"
-                        number="{{ $anggota_ukm }}">
-                        <i class="fas fa-users"></i>
+                        title="Total Submit Proposal" number="{{ $proposal }}">
+                        <i class="fa fa-users"></i>
                     </x-card-with-icon>
                 </div>
             </div>

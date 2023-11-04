@@ -45,7 +45,7 @@ class SubmissionProposal extends Controller
         $this->validate($request, $this->rules, $this->messageRules);
 
         $extension_berkas = $request->file('berkas')->getClientOriginalExtension();
-        $berkas = 'Proposal'.Str::replaceFirst('.', '-', auth()->user()->email).'-'.date('His');
+        $berkas = 'Proposal'.Str::replaceFirst('.', '-', auth()->user()->name).'-'.date('His');
         $request->berkas->move(public_path('/upload/pengajuan/proposal'), $berkas . '.' . $extension_berkas);
 
         try {

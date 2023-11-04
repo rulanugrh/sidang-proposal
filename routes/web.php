@@ -7,6 +7,7 @@ use App\Http\Controllers\ManageProposal;
 use App\Http\Controllers\SubmissionProposal;
 use App\Http\Controllers\UnitKegiatanMahasiswaController;
 use App\Http\Controllers\UploadProposalController;
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\IsAdminMiddleware;
 use App\Models\AnggotaUKM;
 use App\Models\Mahasiswa;
@@ -51,4 +52,5 @@ Route::middleware(['admin'])->group(function () {
     Route::get('admin-proposal/export/excel', [UploadProposalController::class, 'exportExcel'])->name('admin-proposal.excel');
     
     Route::resource('proposal', SubmissionProposal::class)->except(['show']);
+    Route::resource('user', UserController::class)->except(['show']);
 });
