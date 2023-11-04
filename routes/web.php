@@ -34,8 +34,6 @@ Route::get('/', function () {
 });
 
 Route::middleware(['admin'])->group(function () {
-    Route::resource('admin-proposal', ManageProposal::class)->except(['show']);
-    Route::resource('proposal', SubmissionProposal::class)->except(['show']);
     Route::resource('mahasiswa', MahasiswaController::class)->except(['show']);
     Route::get('mahasiswa/export/pdf', [MahasiswaController::class, 'exportPdf'])->name('mahasiswa.pdf');
     Route::get('mahasiswa/export/excel', [MahasiswaController::class, 'exportExcel'])->name('mahasiswa.excel');
@@ -48,7 +46,9 @@ Route::middleware(['admin'])->group(function () {
     Route::get('anggota_ukm/export/pdf', [AnggotaUKMController::class, 'exportPdf'])->name('anggota_ukm.pdf');
     Route::get('anggota_ukm/export/excel', [AnggotaUKMController::class, 'exportExcel'])->name('anggot_ukm.excel');
     
+    Route::resource('admin-proposal', ManageProposal::class)->except(['show']);
     Route::get('admin-proposal/export/pdf', [UploadProposalController::class, 'exportPdf'])->name('admin-proposal.pdf');
     Route::get('admin-proposal/export/excel', [UploadProposalController::class, 'exportExcel'])->name('admin-proposal.excel');
-
+    
+    Route::resource('proposal', SubmissionProposal::class)->except(['show']);
 });

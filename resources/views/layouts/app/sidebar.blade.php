@@ -3,7 +3,7 @@
         <div class="sidebar-header position-relative">
             <div class="d-flex justify-content-between align-items-center">
                 <div class="logo">
-                    <a href="/">Ancha</a>
+                    <a href="/">Arly</a>
                 </div>
                 <div class="theme-toggle d-flex gap-2 align-items-center mt-2">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
@@ -48,7 +48,7 @@
                         <span>Home</span>
                     </a>
                 </li>
-                @if(!auth()->guest() && auth()->user()->isAdmin)
+                @if(!auth()->guest() && auth()->user()->authGroup->id === 1)
                     <li class="sidebar-item @active('mahasiswa*') ">
                         <a href="{{ route('mahasiswa.index') }}" class="sidebar-link">
                             <i class="bi bi-grid-fill"></i>

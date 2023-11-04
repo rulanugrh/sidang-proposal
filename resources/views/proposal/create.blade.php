@@ -1,6 +1,6 @@
 <x-app-layout title="Upload Data Proposal">
 
-    <x-form route="{{ route('proposal.store') }}" method="POST">
+    <x-form-upload route="{{ route('proposal.store') }}" method="POST">
         <x-form-group col="col-md-6 col-12" label="NIM Mahasiswa" :invalidFeedback="$errors->first('NIM')">
             <x-input type="text" name="NIM" :value="old('NIM')" placeholder="Masukan NIM Mahasiswa"
                 required="true"></x-input>
@@ -20,5 +20,5 @@
         <x-form-group col="col-md-6 col-12" label="Email Mahasiswa" :invalid-feedback="$errors->first('email')">
             <x-input type="email" name="email" :value="old('email')" placeholder="Masukan Emailmu" required="true"></x-input>
         </x-form-group>
-    </x-form>
+    </x-form-upload>
 </x-app-layout>
