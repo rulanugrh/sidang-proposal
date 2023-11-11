@@ -17,7 +17,8 @@ class UploadProposal extends Model
         'berkas',
         'email',
         'jadwal_sidang',
-        'pukul'
+        'pukul',
+        'link_zoom'
     ];
 
     protected $table = "proposal";

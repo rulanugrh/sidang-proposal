@@ -18,6 +18,7 @@
                 <th>Berkas Proposal</th>
                 <th>Jadwal Sidang</th>
                 <th>Waktu Sidang</th>
+                <th>Link Zoom</th>
             </x-slot>
             @foreach ($proposals as $proposal)
                 <tr>
@@ -35,6 +36,12 @@
                     </td>
                     <td>{{ $proposal->jadwal_sidang }}</td>
                     <td>{{ $proposal->pukul }}</td>
+                    <td>
+                        <a href="{{$proposal->link_zoom}}">
+                           Link Meeting
+                        </a>
+                        
+                    </td>
                     <td>
                         <x-edit-delete-action>
                             <x-slot name="routeEdit">{{ route('admin-proposal.edit', $proposal->id) }}</x-slot>

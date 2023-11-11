@@ -49,7 +49,7 @@ class ManageProposal extends Controller
         $this->validate($request, $this->rules, $this->messageRules);
 
         $extension_berkas = $request->file('berkas')->getClientOriginalExtension();
-        $berkas = 'Proposal'.Str::replaceFirst('.', '-',auth()->user()->name).'-'.date('His');
+        $berkas = 'Proposal '.Str::replaceFirst('.', '-',auth()->user()->name).'-'.date('His');
         $request->berkas->move(public_path('/upload/pengajuan/proposal'), $berkas . '.' . $extension_berkas);
 
         try {
@@ -81,11 +81,23 @@ class ManageProposal extends Controller
      */
     public function update(Request $request, UploadProposal $admin_proposal)
     {
-        // $this->validate($request, $this->rules);
+        $this->validate($request, $this->rules);
+        
+        $extension_berkas = $request->file('berkas')->getClientOriginalExtension();
+        $berkas = 'Proposal '.Str::replaceFirst('.', '-',auth()->user()->name).'-'.date('His');
+        $request->berkas->move(public_path('/upload/pengajuan/proposal'), $berkas . '.' . $extension_berkas);
 
         try {
 
-            $admin_proposal->update($request->all());
+            $admin_proposal->update([
+                'NIM' => $request->NIM,
+                'judul' => $request->judul,
+                'dosen_pembimbing' => $request->dosen_pembimbing,
+                'jenis_sidang' => $request->jenis_sidang,
+                'berkas' => $berkas . '.' . $extension_berkas,
+                'email' => $request->email,
+                'link_zoom' => $request->link_zoom
+            ]);
             dd();
         } catch (\Exception $e) {
             Log::error($e->getMessage());

@@ -3,7 +3,7 @@
         <li class="breadcrumb-item "><a href="{{ route('proposal.index') }}">Submission Proposal</a></li>
         <li class="breadcrumb-item active" aria-current="page">Ubah Data Proposal</li>
     </x-page-heading>
-    <x-form route="{{ route('proposal.update', $proposal->id) }}" method="POST" overrideMethod="PUT">
+    <x-form-upload route="{{ route('proposal.update', $proposal->id) }}" method="POST" overrideMethod="PUT">
         <x-form-group col="col-md-6 col-12" label="NIM" :invalid-feedback="$errors->first('NIM')">
             <x-input type="text" name="NIM" :value="$proposal->NIM" placeholder="Masukkan NIM"
                 required="true"></x-input>
@@ -25,14 +25,14 @@
                 required="true"></x-input>
         </x-form-group>
         <x-form-group label="Update Berkas Proposal" :invalidFeedback="$errors->first('berkas')">
-            <x-input type="file" name="berkas" :value="$proposal->berkas" placeholder="Masukkan Berkas Sidang"
-                required="true"></x-input>
+            <x-input type="file" name="berkas" :value="old('berkas')" placeholder="Masukkan Berkas Sidang" required="true"></x-input>
         </x-form-group>
+
         <x-form-group label="Jadwal Sidang" :invalidFeedback="$errors->first('jadwal_sidang')">
             <x-input-disabled type="date" name="jadwal_sidang" :value="$proposal->jadwal_sidang" placeholder="Jadwal Sidang"></x-input-disabled>
         </x-form-group>
         <x-form-group label="Waktu Sidang" :invalidFeedback="$errors->first('pukul')">
             <x-input-disabled type="time" name="pukul" :value="$proposal->pukul" placeholder="Waktu Sidang" ></x-input-disabled>
         </x-form-group>
-    </x-form>
+    </x-form-upload>
 </x-app-layout>

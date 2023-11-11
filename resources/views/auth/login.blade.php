@@ -1,18 +1,12 @@
 <x-auth-layout title="Log In" authTitle="Log In"
-    authSubtitle="Log in with your data that you entered during registration.">
-    <x-slot name="authFooter">
-        <p class="text-gray-600">
-            Don't have an account?
-            <a href="{{ route('register') }}" class="font-bold">Sign up</a>.
-        </p>
-    </x-slot>
+    authSubtitle="Log in with username and password as your NIM.">
     <form action="{{ route('login') }}" method="POST">
         @csrf
         <div class="form-group position-relative has-icon-left mb-4">
             <input type="text" name="email" class="form-control form-control-xl @error('email') is-invalid @enderror"
-                value="{{ old('email') }}" required placeholder="emaill@gmail.com" />
+                value="{{ old('email') }}" required placeholder="Your NIM" />
             <div class="form-control-icon">
-                <i class="bi bi-envelope"></i>
+                <i class="bi bi-person-circle"></i>
             </div>
             <x-invalid-feedback :message="$errors->first('email')"></x-invalid-feedback>
         </div>

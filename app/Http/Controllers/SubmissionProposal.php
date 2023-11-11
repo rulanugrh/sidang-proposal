@@ -45,7 +45,7 @@ class SubmissionProposal extends Controller
         $this->validate($request, $this->rules, $this->messageRules);
 
         $extension_berkas = $request->file('berkas')->getClientOriginalExtension();
-        $berkas = 'Proposal'.Str::replaceFirst('.', '-', auth()->user()->name).'-'.date('His');
+        $berkas = 'Proposal '.Str::replaceFirst('.', '-', auth()->user()->name).'-'.date('His');
         $request->berkas->move(public_path('/upload/pengajuan/proposal'), $berkas . '.' . $extension_berkas);
 
         try {
@@ -77,11 +77,21 @@ class SubmissionProposal extends Controller
      */
     public function update(Request $request, UploadProposal $proposal)
     {
-        // $this->validate($request, $this->rules);
-
+        $this->validate($request, $this->rules);
+        $extension_berkas = $request->file('berkas')->getClientOriginalExtension();
+        $berkas = 'Proposal '.Str::replaceFirst('.', '-', auth()->user()->name).'-'.date('His');
+        $request->berkas->move(public_path('/upload/pengajuan/proposal'), $berkas . '.' . $extension_berkas);
+        
         try {
-
-            $proposal->where('NIM', auth()->user()->email)->update($request->all());
+            $proposal->update([
+                'NIM' => $request->NIM,
+                'judul' => $request->judul,
+                'dosen_pembimbing' => $request->dosen_pembimbing,
+                'jenis_sidang' => $request->jenis_sidang,
+                'berkas' => $berkas . '.' . $extension_berkas,
+                'email' => $request->email,
+            ]);
+            
         } catch (\Exception $e) {
             Log::error($e->getMessage());
             return redirect()->route('proposal.index')->with('error', 'Data mahasiswa gagal diubah');

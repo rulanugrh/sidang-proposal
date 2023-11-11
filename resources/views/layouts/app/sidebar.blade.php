@@ -69,7 +69,7 @@
                             <span>Setting Profile</span>
                         </a>
                     </li>
-                @else
+                @elseif(!auth()->guest())
                     <li class="sidebar-item @active('proposal*') ">
                         <a href="{{ route('proposal.index') }}" class="sidebar-link">
                             <i class="bi bi-grid-fxill"></i>
@@ -82,6 +82,7 @@
                             <span>Setting Profile</span>
                         </a>
                     </li>
+                @else
                 @endif
             </ul>
         </div>
