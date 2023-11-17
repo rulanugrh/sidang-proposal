@@ -19,6 +19,17 @@
                 </div>
             </div>
         </section>
+        @foreach ($notifikasi as $nf)
+            <section class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <x-card-for-information col="col-12" number="{{ $nf->nim }}" title="{{ $nf->judul_pengumuman}}"
+                            isi="{{ $nf->isi }}">
+                        </x-card-for-information>
+                    </div>
+                </div>
+            </section>
+        @endforeach
         @push('spesific-css')
             <link rel="stylesheet" href="{{ asset('assets/extension/font-awesome/webfonts/font-awesome.css') }}">
         @endpush

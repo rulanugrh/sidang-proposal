@@ -24,7 +24,11 @@
             <x-input type="text" name="berkas" :value="$admin_proposal->berkas" placeholder="Masukkan Berkas Sidang"
                 required="true"></x-input>
         </x-form-group>
-        <x-form-group col="col-md-6 col-12" label="Email Mahasiswa" :invalidFeedback="$errors->first('email')">
+        <x-form-group col="col-md-6 col-12" label="Link Zoom" :invalidFeedback="$errors->first('link_zoom')">
+            <x-input type="text" name="link_zoom" :value="$admin_proposal->link_zoom" placeholder="Masukkan Link Zoom"
+                required="true"></x-input>
+        </x-form-group>
+        <x-form-group col="col-12" label="Email Mahasiswa" :invalidFeedback="$errors->first('email')">
             <x-input type="email" name="email" :value="$admin_proposal->email" placeholder="Masukkan Email Mahasiswa"
                 required="true"></x-input>
         </x-form-group>

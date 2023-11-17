@@ -4,6 +4,7 @@ use App\Http\Controllers\AnggotaUKMController;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ManageProposal;
+use App\Http\Controllers\NotifikasiController;
 use App\Http\Controllers\SubmissionProposal;
 use App\Http\Controllers\UnitKegiatanMahasiswaController;
 use App\Http\Controllers\UploadProposalController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Middleware\IsAdminMiddleware;
 use App\Models\AnggotaUKM;
 use App\Models\Mahasiswa;
+use App\Models\NotifikasiModel;
 use App\Models\UnitKegiatanMahasiswa;
 use App\Models\UploadProposal;
 use Illuminate\Support\Facades\Route;
@@ -30,7 +32,7 @@ Route::get('/', function () {
     return view('dashboard', [
         'mahasiswa' => Mahasiswa::count(),
         'proposal' => UploadProposal::count(),
-        'anggota_ukm' => AnggotaUKM::count(),
+        'notifikasi' => NotifikasiModel::all(),
     ]);
 });
 
@@ -53,4 +55,6 @@ Route::middleware(['admin'])->group(function () {
     
     Route::resource('proposal', SubmissionProposal::class)->except(['show']);
     Route::resource('user', UserController::class)->except(['show']);
+    Route::resource('notifikasi', NotifikasiController::class)->except(['show']);
+
 });

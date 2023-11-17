@@ -58,27 +58,34 @@
                 
                     <li class="sidebar-item @active('admin-proposal*') ">
                         <a href="{{ route('admin-proposal.index') }}" class="sidebar-link">
-                            <i class="bi bi-grid-fxill"></i>
+                            <i class="bi bi-grid-fill"></i>
                             <span>Proposal Mahasiswa</span>
                         </a>
                     </li>
 
                     <li class="sidebar-item @active('user*') ">
                         <a href="{{ route('user.index') }}" class="sidebar-link">
-                            <i class="bi bi-grid-fxill"></i>
+                            <i class="bi bi-grid-fill"></i>
                             <span>Setting Profile</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item @active('notifikasi*') ">
+                        <a href="{{ route('notifikasi.index') }}" class="sidebar-link">
+                            <i class="bi bi-info-square-fill"></i>
+                            <span>Portal Notifikasi</span>
                         </a>
                     </li>
                 @elseif(!auth()->guest())
                     <li class="sidebar-item @active('proposal*') ">
                         <a href="{{ route('proposal.index') }}" class="sidebar-link">
-                            <i class="bi bi-grid-fxill"></i>
+                            <i class="bi bi-grid-fill"></i>
                             <span>Submission Proposal</span>
                         </a>
                     </li>
                     <li class="sidebar-item @active('user*') ">
                         <a href="{{ route('user.index') }}" class="sidebar-link">
-                            <i class="bi bi-grid-fxill"></i>
+                            <i class="bi bi-grid-fill"></i>
                             <span>Setting Profile</span>
                         </a>
                     </li>

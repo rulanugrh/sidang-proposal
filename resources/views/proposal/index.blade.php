@@ -1,5 +1,5 @@
 <x-app-layout title="Proposal Mahasiswa">
-    <x-page-heading title="Submit Proposal" subtitle="Halaman seluruh data proposal mahasiswa">
+    <x-page-heading title="Submit Proposal" subtitle="Halaman submitting proposal">
         <li class="breadcrumb-item active" aria-current="page">Submit Proposal</li>
     </x-page-heading>
     <x-section-card title="Submit Proposal">
