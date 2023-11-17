@@ -51,21 +51,21 @@
                 @if(!auth()->guest() && auth()->user()->authGroup->id === 1)
                     <li class="sidebar-item @active('mahasiswa*') ">
                         <a href="{{ route('mahasiswa.index') }}" class="sidebar-link">
-                            <i class="bi bi-grid-fill"></i>
+                            <i class="bi bi-people-fill"></i>
                             <span>Mahasiswa</span>
                         </a>
                     </li>
                 
                     <li class="sidebar-item @active('admin-proposal*') ">
                         <a href="{{ route('admin-proposal.index') }}" class="sidebar-link">
-                            <i class="bi bi-grid-fill"></i>
+                            <i class="bi bi-bookmarks-fill"></i>
                             <span>Proposal Mahasiswa</span>
                         </a>
                     </li>
 
                     <li class="sidebar-item @active('user*') ">
                         <a href="{{ route('user.index') }}" class="sidebar-link">
-                            <i class="bi bi-grid-fill"></i>
+                            <i class="bi bi-gear-fill"></i>
                             <span>Setting Profile</span>
                         </a>
                     </li>
@@ -79,13 +79,13 @@
                 @elseif(!auth()->guest())
                     <li class="sidebar-item @active('proposal*') ">
                         <a href="{{ route('proposal.index') }}" class="sidebar-link">
-                            <i class="bi bi-grid-fill"></i>
+                            <i class="bi bi-bookmarks-fill"></i>
                             <span>Submission Proposal</span>
                         </a>
                     </li>
                     <li class="sidebar-item @active('user*') ">
                         <a href="{{ route('user.index') }}" class="sidebar-link">
-                            <i class="bi bi-grid-fill"></i>
+                            <i class="bi bi-gear-fill"></i>
                             <span>Setting Profile</span>
                         </a>
                     </li>
