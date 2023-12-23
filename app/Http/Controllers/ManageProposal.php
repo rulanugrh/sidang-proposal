@@ -98,7 +98,6 @@ class ManageProposal extends Controller
                 'email' => $request->email,
                 'link_zoom' => $request->link_zoom
             ]);
-            dd();
         } catch (\Exception $e) {
             Log::error($e->getMessage());
             return redirect()->route('admin-proposal.index')->with('error', 'Data mahasiswa gagal diubah');
