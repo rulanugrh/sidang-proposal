@@ -21,7 +21,8 @@ return new class extends Migration
             $table->string('berkas');
             $table->date('jadwal_sidang')->nullable();
             $table->time('pukul')->nullable();
-            $table->time('link_zoom')->nullable();
+            $table->string('link_zoom')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

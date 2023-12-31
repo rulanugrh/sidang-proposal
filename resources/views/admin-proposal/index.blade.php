@@ -18,6 +18,7 @@
                 <th>Berkas Proposal</th>
                 <th>Jadwal Sidang</th>
                 <th>Waktu Sidang</th>
+                <th>Status</th>
                 <th>Link Zoom</th>
             </x-slot>
             @foreach ($proposals as $proposal)
@@ -36,6 +37,7 @@
                     </td>
                     <td>{{ $proposal->jadwal_sidang }}</td>
                     <td>{{ $proposal->pukul }}</td>
+                    <td>{{ ucwords( $proposal->status ) }}</td>
                     <td>
                         <a href="{{$proposal->link_zoom}}">
                            Link Meeting

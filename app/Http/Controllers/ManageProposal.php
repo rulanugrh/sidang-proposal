@@ -21,8 +21,18 @@ class ManageProposal extends Controller
         'judul' => 'required',
         'dosen_pembimbing' => 'required',
         'jenis_sidang' => 'required',
-        'berkas' => 'required|max:5120',
+        'berkas' => 'required|file|mimes:pdf,doc,docx|max:5120',
         'email' => 'required',
+    ];
+
+    private $updateRules = [
+        'NIM' => 'required',
+        'judul' => 'required',
+        'dosen_pembimbing' => 'required',
+        'jenis_sidang' => 'required',
+        'email' => 'required',
+        'status' => 'required',
+        'link_zoom' => 'required',
     ];
 
     private $messageRules = [
@@ -31,7 +41,16 @@ class ManageProposal extends Controller
         'jenis_sidang.required' => 'Jenis Sidang Wajib Diisi',
         'berkas.required' => 'Berkas Wajib Diisi',
         'berkas.max' => 'Maximum Size File 5MB',
+    ];
+
+    private $messageRulesUpdate = [
+        'judul.required' => 'Judul Wajib Diisi',
+        'dosen_pembimbing.required' => 'Dosen Pembimbing Wajib Diisi',
+        'jenis_sidang.required' => 'Jenis Sidang Wajib Diisi',
+        'berkas.required' => 'Berkas Wajib Diisi',
         'email.required' => 'Email User Wajib Diisi',
+        'status' => 'Status Untuk Mahasiswa',
+        'link_zoom' => 'Link Zoom Diperkenankan'
     ];
 
     public function index() {
@@ -60,6 +79,8 @@ class ManageProposal extends Controller
                 'jenis_sidang' => $request->jenis_sidang,
                 'berkas' => $berkas . '.' . $extension_berkas,
                 'email' => $request->email,
+                'status' => $request->status,
+                'link_zoom' => $request->link_zoom
             ]);
 
         } catch (\Exception $e) {
@@ -81,24 +102,25 @@ class ManageProposal extends Controller
      */
     public function update(Request $request, UploadProposal $admin_proposal)
     {
-        $this->validate($request, $this->rules);
-        
-        $extension_berkas = $request->file('berkas')->getClientOriginalExtension();
-        $berkas = 'Proposal '.Str::replaceFirst('.', '-',auth()->user()->name).'-'.date('His');
-        $request->berkas->move(public_path('/upload/pengajuan/proposal'), $berkas . '.' . $extension_berkas);
+        $this->validate($request, $this->updateRules, $this->messageRulesUpdate);
+        // dd($request, $admin_proposal);
+        // $extension_berkas = $request->file('berkas')->getClientOriginalExtension();
+        // $berkas = 'Proposal '.Str::replaceFirst('.', '-',auth()->user()->name).'-'.date('His');
+        // $request->berkas->move(public_path('/upload/pengajuan/proposal'), $berkas . '.' . $extension_berkas);
 
         try {
-
-            $admin_proposal->update([
+            $data = $admin_proposal->update([
                 'NIM' => $request->NIM,
                 'judul' => $request->judul,
                 'dosen_pembimbing' => $request->dosen_pembimbing,
                 'jenis_sidang' => $request->jenis_sidang,
-                'berkas' => $berkas . '.' . $extension_berkas,
+                'status' => $request->status,
                 'email' => $request->email,
-                'link_zoom' => $request->link_zoom
+                'link_zoom' => $request->link_zoom,
+                'pukul' => $request->pukul,
+                'jadwal_sidang' => $request->jadwal_sidang,
             ]);
-            dd();
+            // dd($data, $request->status);
         } catch (\Exception $e) {
             Log::error($e->getMessage());
             return redirect()->route('admin-proposal.index')->with('error', 'Data mahasiswa gagal diubah');

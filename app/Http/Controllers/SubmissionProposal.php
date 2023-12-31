@@ -15,7 +15,7 @@ class SubmissionProposal extends Controller
         'judul' => 'required',
         'dosen_pembimbing' => 'required',
         'jenis_sidang' => 'required',
-        'berkas' => 'required|max:5120',
+        'berkas' => 'required|file|mimes:pdf,doc,docx|max:5120',
         'email' => 'required',
     ];
 

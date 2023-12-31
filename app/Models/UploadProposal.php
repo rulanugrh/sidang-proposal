@@ -9,16 +9,18 @@ class UploadProposal extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'NIM',
-        'dosen_pembimbing',
-        'jenis_sidang',
-        'judul',
-        'berkas',
-        'email',
-        'jadwal_sidang',
-        'pukul',
-        'link_zoom'
+    protected $guarded = [
+        // 'NIM',
+        // 'dosen_pembimbing',
+        // 'jenis_sidang',
+        // 'judul',
+        // 'berkas',
+        // 'email',
+        // 'jadwal_sidang',
+        // 'pukul',
+        // 'link_zoom',
+        // 'status',
+        'id',
     ];
 
     protected $table = "proposal";

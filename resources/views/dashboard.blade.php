@@ -19,18 +19,36 @@
                 </div>
             </div>
         </section>
-        @foreach ($notifikasi as $nf)
-            <section class="row">
-                <div class="col-12">
-                    <div class="row">
+        <section class="row">
+            <div class="col-12 col-lg-8">
+                <h6>Calendar</h6>
+                <div id="calendar"></div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <h6>Notifikasi</h6>
+                <div class="row">
+                    @foreach ($notifikasi as $nf)
                         <x-card-for-information col="col-12" number="{{ $nf->nim }}" title="{{ $nf->judul_pengumuman}}"
                             isi="{{ $nf->isi }}">
                         </x-card-for-information>
-                    </div>
+                    @endforeach
                 </div>
-            </section>
-        @endforeach
+            </div>
+        </section>
         @push('spesific-css')
             <link rel="stylesheet" href="{{ asset('assets/extension/font-awesome/webfonts/font-awesome.css') }}">
         @endpush
+
+        <script>
+
+            document.addEventListener('DOMContentLoaded', function() {
+                var calendarEl = document.getElementById('calendar');
+                var calendar = new FullCalendar.Calendar(calendarEl, {
+                    initialView: 'dayGridMonth',
+                    events : @json($events)
+                });
+                calendar.render();
+            });
+        
+        </script>
 </x-app-layout>

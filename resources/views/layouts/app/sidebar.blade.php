@@ -76,6 +76,13 @@
                             <span>Portal Notifikasi</span>
                         </a>
                     </li>
+
+                    <li class="sidebar-item @active('event*') ">
+                        <a href="{{ route('event.index') }}" class="sidebar-link">
+                            <i class="bi bi-calendar-event-fill"></i>
+                            <span>Portal Event</span>
+                        </a>
+                    </li>
                 @elseif(!auth()->guest())
                     <li class="sidebar-item @active('proposal*') ">
                         <a href="{{ route('proposal.index') }}" class="sidebar-link">

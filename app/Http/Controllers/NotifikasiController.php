@@ -19,7 +19,7 @@ class NotifikasiController extends Controller
     }
 
     public function getByNIM() {
-        $notifikasi = NotifikasiModel::where('nim', auth()->user()->email)->first();
+        $notifikasi = NotifikasiModel::where('nim', auth()->user()->email)->orderBy('created_at', 'desc')->limit(1)->get();
         return view('info.index', compact('notifikasi'));
     }
     

@@ -15,7 +15,7 @@
             <x-input type="text" name="jenis_sidang" :value="old('jenis_sidang')" placeholder="Masukan Jenis Sidang" required="true"></x-input>
         </x-form-group>
         <x-form-group col="col-md-6 col-12" label="Berkas" :invalid-feedback="$errors->first('berkas')">
-            <x-input type="file" name="berkas" :value="old('berkas')" placeholder="Masukan Berkass" required="true"></x-input>
+            <x-input type="file"  name="berkas" :value="old('berkas')" placeholder="Masukan Berkas" required="true"></x-input>
         </x-form-group>
         <x-form-group col="col-md-6 col-12" label="Email Mahasiswa" :invalid-feedback="$errors->first('email')">
             <x-input type="email" name="email" :value="old('email')" placeholder="Masukan Emailmu" required="true"></x-input>
