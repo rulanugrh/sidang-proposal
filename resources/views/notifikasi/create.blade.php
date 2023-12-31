@@ -4,15 +4,14 @@
         <li class="breadcrumb-item active" aria-current="page">Create Notifikasi</li>
     </x-page-heading>
     <x-form-upload route="{{ route('notifikasi.store') }}" method="POST">
-        <x-form-group col="col-md-6 col-12" label="NIM Mahasiswa" :invalidFeedback="$errors->first('nim')">
-            <x-input type="text" name="nim" :value="old('nim')" placeholder="Masukan NIM Mahasiswa"
-                required=""></x-input>
-        </x-form-group>
-        <x-form-group col="col-md-6 col-12" label="Judul Pengumuman" :invalid-feedback="$errors->first('judul_pengumuman')">
+        <x-form-group col="ccol-12" label="Judul Pengumuman" :invalid-feedback="$errors->first('judul_pengumuman')">
             <x-input type="text" name="judul_pengumuman" :value="old('judul_pengumuman')" placeholder="Masukkan Judul Pengumuman" required="true"></x-input>
         </x-form-group>
-        <x-form-group col="col-12" label="Isi Pengumuman" :invalid-feedback="$errors->first('isi')">
-            <x-input type="address" name="isi" :value="old('isi')" placeholder="Isi Pengumuman" required="true"></x-input>
+        <x-form-group label="Isi Pengumuman" :invalid-feedback="$errors->first('isi')">
+            <x-textarea type="address" name="isi" :value="old('isi')" placeholder="Isi Pengumuman" required="true"></x-textarea>
+        </x-form-group>
+        <x-form-group col="col-12" label="Berkas" :invalid-feedback="$errors->first('berkas')">
+            <x-input type="file" name="berkas" :value="old('berkas')" placeholder="Masukan File" required="true"></x-input>
         </x-form-group>
     </x-form-upload>
 </x-app-layout>

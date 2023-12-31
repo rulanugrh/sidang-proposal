@@ -31,24 +31,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    if (!auth()->guest()) {
-        $notifikasi = NotifikasiModel::select();
-        if (auth()->user()->authGroup->auth_group_id === 2) {
-            $notifikasi = $notifikasi->where('nim', auth()->user()->email);
-        }
+    // if (!auth()->guest()) {
+    //     $notifikasi = NotifikasiModel::select();
+    //     if (auth()->user()->authGroup->auth_group_id === 2) {
+    //         $notifikasi = $notifikasi->where('nim', auth()->user()->email);
+    //     }
 
-        return view('dashboard', [
-            'mahasiswa' => Mahasiswa::count(),
-            'proposal' => UploadProposal::count(),
-            'notifikasi' => $notifikasi->orderBy('created_at', 'desc')->limit(5)->get(),
-            'events' => Event::all(),
-        ]);
-    }
+    //     return view('dashboard', [
+    //         'mahasiswa' => Mahasiswa::count(),
+    //         'proposal' => UploadProposal::count(),
+    //         'notifikasi' => $notifikasi->orderBy('created_at', 'desc')->limit(5)->get(),
+    //         'events' => Event::all(),
+    //     ]);
+    // }
 
     return view('dashboard', [
         'mahasiswa' => Mahasiswa::count(),
         'proposal' => UploadProposal::count(),
-        'notifikasi' => NotifikasiModel::where('nim', '-')->limit(5)->get(),
+        'notifikasi' => NotifikasiModel::orderBy('created_at', 'desc')->limit(10)->get(),
         'events' => Event::all(),
     ]);
 });

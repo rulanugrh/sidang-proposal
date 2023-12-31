@@ -22,7 +22,6 @@ return new class extends Migration
             $table->date('jadwal_sidang')->nullable();
             $table->time('pukul')->nullable();
             $table->string('link_zoom')->nullable();
-            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

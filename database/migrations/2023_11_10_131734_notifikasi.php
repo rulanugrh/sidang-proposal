@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('judul_pengumuman');
             $table->string('isi');
-            $table->string('nim')->nullable();
+            $table->string('berkas')->nullable();
             $table->timestamps();
         });
     }

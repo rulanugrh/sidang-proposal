@@ -20,16 +20,16 @@
             </div>
         </section>
         <section class="row">
-            <div class="col-12 col-lg-8">
+            <div class="col-7">
                 <h6>Calendar</h6>
                 <div id="calendar"></div>
             </div>
-            <div class="col-12 col-lg-4">
-                <h6>Notifikasi</h6>
+            <div class="col-5">
                 <div class="row">
+                    <h6>Notifikasi</h6>
                     @foreach ($notifikasi as $nf)
-                        <x-card-for-information col="col-12" number="{{ $nf->nim }}" title="{{ $nf->judul_pengumuman}}"
-                            isi="{{ $nf->isi }}">
+                        <x-card-for-information col="col-12" title="{{ $nf->judul_pengumuman}}"
+                            isi="{{ $nf->isi }}" link="{{ 'upload/berkas/penting/'. $nf->berkas }}">
                         </x-card-for-information>
                     @endforeach
                 </div>

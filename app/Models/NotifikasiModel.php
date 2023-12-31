@@ -12,7 +12,7 @@ class NotifikasiModel extends Model
     protected $fillable = [
         'judul_pengumuman',
         'isi',
-        'nim'
+        'berkas'
     ];
 
     protected $table = "notifikasi";

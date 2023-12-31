@@ -10,14 +10,19 @@
             <x-slot name="column">
                 <th>Judul Pengumuman</th>
                 <th>Isi</th>
-                <th>NIM Mahasiswa</th>
+                <th>File</th>
             </x-slot>
             @foreach ($notifikasis as $notifikasi)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $notifikasi->judul_pengumuman }}</td>
                     <td>{{ $notifikasi->isi }}</td>
-                    <td>{{ $notifikasi->nim }}</td>
+                    <td>
+                        <a href="{{'upload/berkas/penting/'. $notifikasi->berkas}}">
+                            {{ $notifikasi->berkas }}
+                        </a>
+                        
+                    </td>
                     <td>
                         <x-edit-delete-action>
                             <x-slot name="routeEdit">{{ route('notifikasi.edit', $notifikasi->id) }}</x-slot>

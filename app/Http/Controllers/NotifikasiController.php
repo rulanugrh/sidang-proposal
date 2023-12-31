@@ -4,6 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\NotifikasiModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Log;
+use App\Models\UploadProposal;
+use App\Models\User;
+use App\Exports\ProposalExport;
+use Maatwebsite\Excel\Excel as ExcelType;
+use Maatwebsite\Excel\Facades\Excel;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class NotifikasiController extends Controller
 {
@@ -31,11 +40,15 @@ class NotifikasiController extends Controller
     public function store(Request $request) {
         $this->validate($request, $this->rules);
 
+        $extension_berkas = $request->file('berkas')->getClientOriginalExtension();
+        $berkas = 'Proposal '.Str::replaceFirst('.', '-',auth()->user()->name).'-'.date('His');
+        $request->berkas->move(public_path('/upload/berkas/penting'), $berkas . '.' . $extension_berkas);
+
         try {
             NotifikasiModel::create([
                 'judul_pengumuman' => $request->judul_pengumuman,
                 'isi' => $request->isi,
-                'nim' => $request->nim,
+                'berkas' => $berkas . '.' . $extension_berkas,
             ]);
 
         } catch (\Exception $e) {
@@ -53,8 +66,17 @@ class NotifikasiController extends Controller
     public function update(Request $request, NotifikasiModel $notifikasi) {
         $this->validate($request, $this->rules);
 
+        $extension_berkas = $request->file('berkas')->getClientOriginalExtension();
+        $berkas = 'Proposal '.Str::replaceFirst('.', '-',auth()->user()->name).'-'.date('His');
+        $request->berkas->move(public_path('/upload/berkas/penting'), $berkas . '.' . $extension_berkas);
+
+
         try {
-            $notifikasi->update($request->all());
+            $notifikasi->update([
+                'judul_pengumuman' => $request->judul_pengumuman,
+                'isi' => $request->isi,
+                'berkas' => $berkas . '.' . $extension_berkas,
+            ]);
 
         } catch (\Exception $e) {
             Log::error($e->getMessage());

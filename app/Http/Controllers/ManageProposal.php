@@ -49,7 +49,6 @@ class ManageProposal extends Controller
         'jenis_sidang.required' => 'Jenis Sidang Wajib Diisi',
         'berkas.required' => 'Berkas Wajib Diisi',
         'email.required' => 'Email User Wajib Diisi',
-        'status' => 'Status Untuk Mahasiswa',
         'link_zoom' => 'Link Zoom Diperkenankan'
     ];
 
@@ -79,7 +78,6 @@ class ManageProposal extends Controller
                 'jenis_sidang' => $request->jenis_sidang,
                 'berkas' => $berkas . '.' . $extension_berkas,
                 'email' => $request->email,
-                'status' => $request->status,
                 'link_zoom' => $request->link_zoom
             ]);
 
@@ -114,7 +112,6 @@ class ManageProposal extends Controller
                 'judul' => $request->judul,
                 'dosen_pembimbing' => $request->dosen_pembimbing,
                 'jenis_sidang' => $request->jenis_sidang,
-                'status' => $request->status,
                 'email' => $request->email,
                 'link_zoom' => $request->link_zoom,
                 'pukul' => $request->pukul,
