@@ -3,7 +3,7 @@
         <li class="breadcrumb-item "><a href="{{ route('admin-proposal.index') }}">Proposal Mahasiswa</a></li>
         <li class="breadcrumb-item active" aria-current="page">Ubah Data Proposal Mahasiswa</li>
     </x-page-heading>
-    <x-form route="{{ route('admin-proposal.update', $admin_proposal->id) }}" method="POST" overrideMethod="PUT">
+    <x-form-upload route="{{ route('admin-proposal.update', $admin_proposal->id) }}" method="POST" overrideMethod="PUT">
         <x-form-group col="col-md-6 col-12" label="NIM" :invalid-feedback="$errors->first('NIM')">
             <x-input type="text" name="NIM" id="NIM" :value="$admin_proposal->NIM" placeholder="Masukkan NIM"
                 required="true"></x-input>
@@ -49,5 +49,5 @@
             <x-input type="time" id="pukul" name="pukul" :value="$admin_proposal->pukul" placeholder="Masukkan Waktu Sidang"
                 required="true"></x-input>
         </x-form-group>
-    </x-form>
+    </x-form-upload>
 </x-app-layout>
